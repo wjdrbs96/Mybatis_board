@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,16 +23,10 @@
     <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/res/css/application.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 굴림체; }
-        input.form-control {
+        body { font-family: 굴림체; }
+        input.form-control, select.form-control {
             width: 200px;
         }
-
-        .color-control {
-            color: #58ccff;
-        }
-
         h1 {
             margin-top: 50px;
         }
@@ -40,41 +35,45 @@
 <body>
 
 <div class="container">
-
-    <a href="http://localhost:8080/login"><h1 style="color: #0000FF;">로그인</h1></a>
+    <a href="http://localhost:8080/register"><h1 style="color: #0000FF;">회원가입</h1></a>
     <hr />
 
-    <form method="post">
+    <form action="http://localhost:8080/register" method="post">
         <div class="form-group">
             <label>사용자 아이디</label>
-            <input type="text" class="form-control" name="loginId" placeholder="아이디를 입력하세요."/>
+            <input type="text" class="form-control" name="loginId" value="${member.loginId}" placeholder="아이디를 입력하세요.">
         </div>
         <div class="form-group">
             <label>비밀번호</label>
-            <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요."/>
+            <input type="password" class="form-control" name="password1" value="${member.password}" placeholder="비밀번호를 입력하세요.">
         </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="autologin" /> 자동 로그인
-            </label>
-            <a class="color-control" href="http://localhost:8080/find/password">
-                <button class="btn btn-link" type="button">비밀번호 찾기</button>
-            </a>
+        <div class="form-group">
+            <label>비밀번호 재확인</label>
+            <input type="password" class="form-control" name="password2" value="${password2}" placeholder="비밀번호 재입력하세요."/>
         </div>
-        <button type="submit" class="btn btn-primary">
-            <i class="glyphicon glyphicon-ok"></i> 로그인
-        </button>
-        <a href="http://localhost:8080/register" class="btn btn-default">
-            <i class="glyphicon glyphicon-user"></i> 회원가입
-        </a>
+        <div class="form-group">
+            <label>이름</label>
+            <input type="text" class="form-control" name="name" value="${member.name}" placeholder="이름을 입력하세요."/>
+        </div>
+        <div class="form-group">
+            <label>닉네임</label>
+            <input type="text" class="form-control" name="nickname" value="${member.nickName}" placeholder="별명을 입력하세요."/>
+        </div>
+        <div class="form-group">
+            <label>이메일</label>
+            <input type="email" class="form-control" name="email" value="${member.email}" placeholder="이메일을 입력하세요."/>
+        </div>
 
+        <button type="submit" class="btn btn-primary">
+            <i class="glyphicon glyphicon-ok"></i> 회원가입
+        </button>
+        <a href="http://localhost:8080/login" class="btn btn-default">처음으로</a>
     </form>
 
     <hr />
-
-    <c:if test ="${errorMsg != null}">
+    <c:if test="${error != null}">
         <div class="alert alert-danger">
-            로그인 실패: ${errorMsg}
+            회원가입 실패: ${error}
         </div>
     </c:if>
 

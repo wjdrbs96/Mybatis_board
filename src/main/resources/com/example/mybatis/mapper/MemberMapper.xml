@@ -11,4 +11,14 @@
         where loginId = #{loginId}
     </select>
 
+    <select id="isSameCheckLoginId" resultType="int">
+        select count(*)
+        from member
+        where loginId = #{loginId}
+    </select>
+
+    <insert id="memberRegister">
+        insert into member (loginId, password, name, nickname, email)
+        values (#{loginId}, #{password}, #{name}, #{nickname}, #{email})
+    </insert>
 </mapper>
