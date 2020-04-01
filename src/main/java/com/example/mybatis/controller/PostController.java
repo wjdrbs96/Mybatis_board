@@ -130,4 +130,9 @@ public class PostController {
         commentMapper.postCommentAllDelete(postId);
         return "redirect:/post/list";
     }
+
+    @RequestMapping(value = "notice", method = RequestMethod.GET)
+    public String notice() {
+        return "notice/notice";
+    }
 }
