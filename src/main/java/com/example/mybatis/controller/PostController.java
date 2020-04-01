@@ -90,6 +90,28 @@ public class PostController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Post post = new Post(memberId, title, content, nickname, 1, sdf.format(new Date()));
         postMapper.insertPost(post);
+        return "redirect:/post/list";
+    }
+
+    @RequestMapping(value = "post/update", method = RequestMethod.GET)
+    public String postUpdateRedirect(Model model,
+                                     @RequestParam("postId") int postId) {
+        Post post = postMapper.findByPostId(postId);
+        model.addAttribute("posts", post);
+        return "post/postUpdate";
+    }
+
+    @RequestMapping(value = "post/update", method = RequestMethod.POST)
+    public String postUpdate(@RequestParam("postId") int postId,
+                             @RequestParam("title") String title,
+                             @RequestParam("content") String content) {
+        Post post = postMapper.findByPostId(postId);
+        post.setTitle(title);
+        post.setContent(content);
+        post.setCount(post.getCount());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        post.setUpdateTime(sdf.format(new Date()));
+        postMapper.postUpdate(post);
 
         return "redirect:/post/list";
     }

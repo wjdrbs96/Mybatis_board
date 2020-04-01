@@ -25,7 +25,7 @@
 
     <update id="postUpdate">
         update post
-        set title = #{title}, content = #{content}, count = #{count}, createDateTime = #{createDateTime}
+        set title = #{title}, content = #{content}, count = #{count}, createDateTime = #{createDateTime}, updateTime = #{updateTime}
         where postId = ${postId}
     </update>
 

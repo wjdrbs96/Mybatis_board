@@ -80,7 +80,8 @@
             <th>작성자</th>
             <th>제목</th>
             <th>조회수</th>
-            <th>날짜</th>
+            <th>수정시간</th>
+            <th>작성시간</th>
         </tr>
 
         <c:forEach items="${posts}" var="post">
@@ -91,6 +92,7 @@
                     <a href="http://localhost:8080/post/view?postId=${post.getPostId()}">${post.getTitle()}</a>
                 </th>
                 <th>${post.getCount()}</th>
+                <th>${post.getUpdateTime()}</th>
                 <th>${post.getCreateDateTime()}</th>
             </tr>
         </c:forEach>

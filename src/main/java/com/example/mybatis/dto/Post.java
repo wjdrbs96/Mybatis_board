@@ -6,6 +6,7 @@ public class Post {
     String title;
     String content;
     int count;
+    String UpdateTime;
     String createDateTime;
     String nickName;
     String name;
@@ -17,6 +18,14 @@ public class Post {
         this.nickName = nickName;
         this.count = count;
         this.createDateTime = createDateTime;
+    }
+
+    public String getUpdateTime() {
+        return UpdateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        UpdateTime = updateTime;
     }
 
     public long getPostId() {
