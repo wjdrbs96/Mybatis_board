@@ -22,12 +22,15 @@
             crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/res/css/application.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Insert title here</title>
 </head>
 <style>
     #margin{
         margin-bottom : 20px
     }
+
     .navbar.sticky-top.navbar-expand-lg.navbar-light {
         margin : 0px;
         background-color: white;
@@ -35,8 +38,9 @@
 </style>
 <body>
 
+
 <div class="container">
-    <!-- 메뉴바 -->
+
     <nav class="navbar sticky-top navbar-expand-lg navbar-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,16 +61,22 @@
                 </li>
 
                 <li class="nav-item dropdown active">
-                    <a class="nav-link" href="http://localhost:8080/member/update?loginId=<%=session.getAttribute("userId")%>">회원정보수정</a>
+                    <a class="nav-link dropdown-toggle" href="http://localhost:8080/member/update" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        회원정보수정
+                    </a>
                 </li>
+
             </ul>
+
+
         </div>
     </nav>
-    <!-- ./ 메뉴바 -->
+
     <form method="post" class="form-inline">
         <div id="margin" class="form-group">
             <select name="select" class="form-control">
-                <option value="title"}>제목</option>
+                <option value="title" selected>제목</option>
                 <option value="nickname">작성자</option>
             </select>
             <input type="text" size=20 class="form-control" name="search"  placeholder="검색" >
@@ -106,7 +116,5 @@
         </c:forEach>
     </ul>
 </div>
-
-
 </body>
 </html>

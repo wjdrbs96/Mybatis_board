@@ -1,5 +1,6 @@
 package com.example.mybatis.mapper;
 
+import com.example.mybatis.dto.Member;
 import com.example.mybatis.dto.Post;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -13,4 +14,6 @@ public interface PostMapper {
     List<Post> postFindAll(@Param("page") int page, @Param("pageSize") int pageSize);
     Post findByPostId(@Param("postId") int postId);
     void postUpdate(Post post);
+    List<Post> postFindByTitle(String search, int currentPage, int pageSize);
+    List<Post> postFindByNickName(String search, int currentPage, int pageSize);
 }

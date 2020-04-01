@@ -39,4 +39,10 @@
         set loginId = #{loginId}, password = #{password}, name = #{name}, nickName = #{nickName}, email = #{email}
         where memberId = #{memberId}
     </update>
+
+    <select id="findMemberByLoginId" resultType="Member">
+        select memberId, name, nickname
+        from member
+        where loginId = #{loginId}
+    </select>
 </mapper>

@@ -25,7 +25,24 @@
 
     <update id="postUpdate">
         update post
-        set  title = #{title}, content = #{content}, count = #{count}, createDateTime = #{createDateTime}
+        set title = #{title}, content = #{content}, count = #{count}, createDateTime = #{createDateTime}
         where postId = ${postId}
     </update>
+
+    <select id="postFindByTitle" resultType="Post">
+        select p.*, m.nickname
+        from post p join member m
+        on p.memberId = m.memberId
+        where title like concat('%', #{search}, '%')
+        limit #{currentPage}, #{pageSize}
+    </select>
+
+    <select id="postFindByNickName" resultType="Post">
+        select p.*, m.nickname
+        from post p join member m
+        on p.memberId = m.memberId
+        where m.nickname like concat('%', #{search}, '%')
+        limit #{currentPage}, #{pageSize}
+    </select>
+
 </mapper>

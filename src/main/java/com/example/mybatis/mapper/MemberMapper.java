@@ -12,4 +12,5 @@ public interface MemberMapper {
     String passwordFind(String loginId, String name);
     Member findOneMember(String loginId);
     void memberUpdate(Member member);
+    Member findMemberByLoginId(String loginId);
 }

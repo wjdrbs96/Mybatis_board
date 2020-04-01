@@ -20,14 +20,13 @@
             crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/res/css/application.css" rel="stylesheet">
     <style>
         body { font-family: 굴림체; }
         table.table { width: 500px; }
         table td:nth-child(1) { background-color: #eee; }
-
         h1 {
             margin-top: 30px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -35,57 +34,47 @@
 
 <div class="container">
 
-    <h1>게시글 보기</h1>
+    <h1>게시글 등록</h1>
 
-    <form action="http://localhost:8080/post/update?postId=${posts.getPostId()}" method="POST">
+    <form method="post">
         <table class="table table-bordered table-condensed">
-            <tr>
-                <td>게시글 번호</td>
-                <td>${posts.getPostId()}</td>
-            </tr>
+
             <tr>
                 <td>글 제목</td>
                 <td>
-                    <textarea class="form-control" name="title" rows="1" readonly>${posts.getTitle()}</textarea>
+                    <textarea class="form-control" name="title" rows="1"></textarea>
                 </td>
             </tr>
             <tr>
                 <td>글 내용</td>
                 <td>
-                    <textarea class="form-control" name="content" rows="10" readonly>${posts.getContent()}</textarea>
+                    <textarea class="form-control" name="content" rows="10"></textarea>
                 </td>
             </tr>
 
             <tr>
                 <td>작성자</td>
-                <td>${posts.getName()}</td>
-            </tr>
-            <tr>
-                <td>작성시간</td>
-                <td>${posts.getCreateDateTime()}</td>
-            </tr>
-        </table>
-
-        <button type="submit" class="btn btn-primary">수정</button>
-        <a href="http://localhost:8080/comment/list?postId=${posts.getPostId()}" class="btn btn-warning">댓글</a>
-        <a href="http://localhost:8080/post/delete?postId=${posts.getPostId()}" class="btn btn-warning" onclick="confirm('삭제하시겠습니까?')">삭제</a>
-        <a href="javascript:window.history.back()" class="btn btn-info">뒤로가기</a>
-        <a href="http://localhost:8080/post/list" class="btn btn-info">처음으로</a>
-    </form>
-
-
-    <h1>댓글 등록</h1>
-    <form action="http://localhost:8080/comment/view" method="get">
-        <table class="table table-bordered table-condensed">
-            <tr>
-                <td class="mid" width="100">댓글</td>
                 <td>
-                    <textarea class="form-control" name="content" rows="2"></textarea>
+                    ${member.getName()}
                 </td>
-                <td width="100px"><textarea class="form-control" name="postId" rows="2" readonly>${posts.getPostId()}</textarea></td>
             </tr>
+            <tr>
+                <td>닉네임</td>
+                <td>
+                    <input type="text" name="nickname" value="${member.getNickName()}" class="form-control" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>사용자번호</td>
+                <td>
+                    <input type="text" name="memberId" value="${member.getMemberId()}" class="form-control" readonly>
+                </td>
+            </tr>
+
         </table>
+
         <button type="submit" class="btn btn-primary">등록</button>
+        <a href="javascript:window.history.back()" class="btn btn-info">돌아가기</a>
     </form>
 
 </div>
