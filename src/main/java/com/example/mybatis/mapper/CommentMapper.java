@@ -9,4 +9,7 @@ import java.util.List;
 public interface CommentMapper {
     void commentInsert(Comment comment);
     List<Comment> findAllComment(int postId);
+    void postCommentAllDelete(int postId);
+    void commentDelete(int commentId);
+    Comment findOneComment(int commentId);
 }

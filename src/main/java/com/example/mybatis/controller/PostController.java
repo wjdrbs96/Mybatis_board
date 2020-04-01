@@ -2,6 +2,7 @@ package com.example.mybatis.controller;
 
 import com.example.mybatis.dto.Member;
 import com.example.mybatis.dto.Post;
+import com.example.mybatis.mapper.CommentMapper;
 import com.example.mybatis.mapper.MemberMapper;
 import com.example.mybatis.mapper.PostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class PostController {
 
     @Autowired PostMapper postMapper;
     @Autowired MemberMapper memberMapper;
+    @Autowired CommentMapper commentMapper;
 
     @RequestMapping(value = "post/list", method = RequestMethod.GET)
     public String postMain(Model model,
@@ -113,6 +115,19 @@ public class PostController {
         post.setUpdateTime(sdf.format(new Date()));
         postMapper.postUpdate(post);
 
+        return "redirect:/post/list";
+    }
+
+    @RequestMapping(value = "post/delete", method = RequestMethod.GET)
+    public String postDelete(@RequestParam("postId") int postId) {
+        postMapper.deletePost(postId);
+        return "redirect:/postComment/deleteAll?postId=" + postId;
+    }
+
+
+    @RequestMapping(value = "postComment/deleteAll", method = RequestMethod.GET)
+    public String postCommentDeleteAll(@RequestParam("postId") int postId) {
+        commentMapper.postCommentAllDelete(postId);
         return "redirect:/post/list";
     }
 }

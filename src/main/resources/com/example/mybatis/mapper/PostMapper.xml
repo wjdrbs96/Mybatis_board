@@ -49,4 +49,9 @@
         insert into post(memberId, title, content, count, createDateTime)
         values (#{memberId}, #{title}, #{content}, #{count}, #{createDateTime})
     </insert>
+
+    <delete id="deletePost">
+        delete from post
+        where postId = #{postId}
+    </delete>
 </mapper>

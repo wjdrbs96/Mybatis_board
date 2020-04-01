@@ -14,4 +14,20 @@
         where postId = #{postId}
     </select>
 
+    <delete id="postCommentAllDelete">
+        delete from comment
+        where postId = #{postId}
+    </delete>
+
+    <delete id="commentDelete">
+        delete from comment
+        where commentId = #{commentId}
+    </delete>
+
+    <select id="findOneComment" resultType="Comment">
+        select *
+        from comment
+        where commentId = #{commentId};
+    </select>
+
 </mapper>

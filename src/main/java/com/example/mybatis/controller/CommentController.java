@@ -40,4 +40,11 @@ public class CommentController {
         model.addAttribute("list", list);
         return "comment/commentView";
     }
+
+    @RequestMapping(value = "comment/delete", method = RequestMethod.GET)
+    public String commentDelete(@RequestParam("commentId") int commentId) {
+        Comment comment = commentMapper.findOneComment(commentId);
+        commentMapper.commentDelete(commentId);
+        return "redirect:/comment/list?postId=" + comment.getPostId();
+    }
 }
