@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mybatis.mapper.CommentMapper">
+    <insert id="commentInsert">
+        insert into comment(postId, memberId, content, createDateTime)
+        values (#{postId}, #{memberId}, #{content}, #{createDateTime})
+    </insert>
+
+    <select id="findAllComment" resultType="Comment">
+        select *
+        from comment
+        where postId = #{postId}
+    </select>
+
+</mapper>

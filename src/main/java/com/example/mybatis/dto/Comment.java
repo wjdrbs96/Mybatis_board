@@ -7,7 +7,22 @@ public class Comment {
     long postId;
     long memberId;
     String content;
+    String updateTime;
     String createDateTime;
+
+    public Comment(int postId, String content, String createDateTime) {
+        this.postId = postId;
+        this.content = content;
+        this.createDateTime = createDateTime;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public long getCommentId() {
         return commentId;
