@@ -10,4 +10,6 @@ public interface MemberMapper {
     int isSameCheckLoginId(String loginId);
     void memberRegister(Member member);
     String passwordFind(String loginId, String name);
+    Member findOneMember(String loginId);
+    void memberUpdate(Member member);
 }

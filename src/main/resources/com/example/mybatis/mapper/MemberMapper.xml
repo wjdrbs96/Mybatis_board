@@ -27,4 +27,16 @@
         from member
         where loginId = #{loginId} and name = #{name}
     </select>
+
+    <select id="findOneMember" resultType="Member">
+        select *
+        from member
+        where loginId = #{loginId}
+    </select>
+
+    <update id="memberUpdate">
+        update member
+        set loginId = #{loginId}, password = #{password}, name = #{name}, nickName = #{nickName}, email = #{email}
+        where memberId = #{memberId}
+    </update>
 </mapper>

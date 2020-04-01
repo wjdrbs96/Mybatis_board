@@ -126,4 +126,24 @@ public class MemberController {
         return "redirect:/login";
     }
 
+    @RequestMapping(value = "member/update", method = RequestMethod.GET)
+    public String memberUpdate(Model model,
+                               @RequestParam("loginId") String loginId) {
+        Member member = memberMapper.findOneMember(loginId);
+        model.addAttribute("member", member);
+        return "member/memberUpdate";
+    }
+
+    @RequestMapping(value = "member/update", method = RequestMethod.POST)
+    public String memberUpdate(@RequestParam("memberId") int memberId,
+                               @RequestParam("loginId") String loginId,
+                               @RequestParam("password") String password,
+                               @RequestParam("name") String name,
+                               @RequestParam("nickname") String nickname,
+                               @RequestParam("email") String email) {
+        Member member = new Member(loginId, password, name, nickname, email);
+        memberMapper.memberUpdate(member);
+
+        return "redirect:/post/list";
+    }
 }

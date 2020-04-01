@@ -68,7 +68,7 @@
                 </li>
 
                 <li class="nav-item dropdown active">
-                    <a class="nav-link" href="http://localhost:8080/member/update?loginId=<%=session.getAttribute("userid")%>">회원정보수정</a>
+                    <a class="nav-link" href="http://localhost:8080/member/update?loginId=<%=session.getAttribute("userId")%>">회원정보수정</a>
                 </li>
             </ul>
         </div>
