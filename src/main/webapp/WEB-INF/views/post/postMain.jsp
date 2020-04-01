@@ -57,18 +57,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost:8081/post/list">Home</a>
+                    <a class="nav-link" href="http://localhost:8080/post/list">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost:8081/logout">Logout</a>
+                    <a class="nav-link" href="http://localhost:8080/logout">Logout</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost:8081/notice">공지사항</a>
+                    <a class="nav-link" href="http://localhost:8080/notice">공지사항</a>
                 </li>
 
                 <li class="nav-item dropdown active">
-                    <a class="nav-link" href="http://localhost:8081/member/update?loginId=<%=session.getAttribute("userid")%>">회원정보수정</a>
+                    <a class="nav-link" href="http://localhost:8080/member/update?loginId=<%=session.getAttribute("userid")%>">회원정보수정</a>
                 </li>
             </ul>
         </div>
@@ -99,7 +99,7 @@
                 <th>${post.getPostId()}</th>
                 <th>${post.getNickName()}</th>
                 <th>
-                    <a href="http://localhost:8081/post/View?postId=${post.getPostId()}">${post.getTitle()}</a>
+                    <a href="http://localhost:8080/post/view?postId=${post.getPostId()}">${post.getTitle()}</a>
                 </th>
                 <th>${post.getCount()}</th>
                 <th>${post.getCreateDateTime()}</th>
@@ -107,7 +107,7 @@
         </c:forEach>
     </table>
 
-    <a href="http://localhost:8081/post/write" class="btn btn-default pull-right">글쓰기</a>
+    <a href="http://localhost:8080/post/write" class="btn btn-default pull-right">글쓰기</a>
 
     <ul class="pagination">
         <c:forEach var="i" begin="1" end="${totalPage}" step="1">

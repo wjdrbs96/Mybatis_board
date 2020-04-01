@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -31,5 +33,18 @@ public class PostController {
         model.addAttribute("page", page);
         model.addAttribute("totalPage", totalCount);
         return "post/postMain";
+    }
+
+    @RequestMapping(value = "post/view", method = RequestMethod.GET)
+    public String postView(Model model,
+                           @RequestParam("postId") int postId) {
+
+        Post post = postMapper.findByPostId(postId);
+        post.setCount(post.getCount() + 1);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        post.setCreateDateTime(sdf.format(new Date()));
+        postMapper.postUpdate(post);
+        model.addAttribute("posts", post);
+        return "post/postView";
     }
 }

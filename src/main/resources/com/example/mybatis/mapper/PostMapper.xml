@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
 <mapper namespace="com.example.mybatis.mapper.PostMapper">
     <select id="postAllCount" resultType="int">
         select count(postId)
@@ -16,4 +15,17 @@
         order by p.postId desc
         limit #{page}, #{pageSize};
     </select>
+
+    <select id="findByPostId" resultType="Post">
+        select p.*, m.name
+        from post p join member m
+        on p.memberId = m.memberId
+        where p.postId = ${postId}
+    </select>
+
+    <update id="postUpdate">
+        update post
+        set  title = #{title}, content = #{content}, count = #{count}, createDateTime = #{createDateTime}
+        where postId = ${postId}
+    </update>
 </mapper>

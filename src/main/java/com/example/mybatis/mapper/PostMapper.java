@@ -11,4 +11,6 @@ public interface PostMapper {
 
     int postAllCount();
     List<Post> postFindAll(@Param("page") int page, @Param("pageSize") int pageSize);
+    Post findByPostId(@Param("postId") int postId);
+    void postUpdate(Post post);
 }
