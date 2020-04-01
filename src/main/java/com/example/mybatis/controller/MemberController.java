@@ -99,4 +99,25 @@ public class MemberController {
         return "login/register";
     }
 
+    @RequestMapping(value = "find/password", method = RequestMethod.GET)
+    public String findPassword() {
+        return "login/findPassword";
+    }
+
+    @RequestMapping(value = "find/password", method = RequestMethod.POST)
+    public String findPassword(Model model,
+                               @RequestParam("loginId") String loginId,
+                               @RequestParam("name") String name) {
+
+        String password = memberMapper.passwordFind(loginId, name);
+        if (password == null) {
+            String errorMsg = "입력하신 정보가 존재하지 않습니다";
+            model.addAttribute("errorMsg", errorMsg);
+            return "login/errorPage";
+        }
+
+        model.addAttribute("password", password);
+        return "login/findPasswordView";
+    }
+
 }

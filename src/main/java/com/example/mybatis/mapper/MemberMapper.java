@@ -9,4 +9,5 @@ public interface MemberMapper {
     String loginCheck(@Param("loginId") String loginId);
     int isSameCheckLoginId(String loginId);
     void memberRegister(Member member);
+    String passwordFind(String loginId, String name);
 }
