@@ -1,6 +1,7 @@
 package com.example.mybatis.controller;
 
 import com.example.mybatis.dto.Comment;
+import com.example.mybatis.dto.Post;
 import com.example.mybatis.mapper.CommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,15 @@ public class CommentController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Comment comment = new Comment(postId, content, sdf.format(new Date()));
         commentMapper.commentInsert(comment);
+        List<Comment> list = commentMapper.findAllComment(postId);
+        model.addAttribute("postId", postId);
+        model.addAttribute("list", list);
+        return "comment/commentView";
+    }
+
+    @RequestMapping(value = "comment/list", method = RequestMethod.GET)
+    public String commentAllList(Model model,
+                                 @RequestParam("postId") int postId) {
         List<Comment> list = commentMapper.findAllComment(postId);
         model.addAttribute("postId", postId);
         model.addAttribute("list", list);
