@@ -45,4 +45,8 @@
         limit #{currentPage}, #{pageSize}
     </select>
 
+    <insert id="insertPost">
+        insert into post(memberId, title, content, count, createDateTime)
+        values (#{memberId}, #{title}, #{content}, #{count}, #{createDateTime})
+    </insert>
 </mapper>

@@ -82,7 +82,15 @@ public class PostController {
     }
 
     @RequestMapping(value = "post/write", method = RequestMethod.POST)
-    public String postWrite(Model model) {
+    public String postWrite(@RequestParam("title") String title,
+                            @RequestParam("content") String content,
+                            @RequestParam("nickname") String nickname,
+                            @RequestParam("memberId") int memberId) {
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Post post = new Post(memberId, title, content, nickname, 1, sdf.format(new Date()));
+        postMapper.insertPost(post);
+
+        return "redirect:/post/list";
     }
 }

@@ -10,6 +10,15 @@ public class Post {
     String nickName;
     String name;
 
+    public Post(int memberId, String title, String content, String nickName, int count, String createDateTime) {
+        this.memberId = memberId;
+        this.title = title;
+        this.content = content;
+        this.nickName = nickName;
+        this.count = count;
+        this.createDateTime = createDateTime;
+    }
+
     public long getPostId() {
         return postId;
     }

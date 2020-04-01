@@ -16,4 +16,5 @@ public interface PostMapper {
     void postUpdate(Post post);
     List<Post> postFindByTitle(String search, int currentPage, int pageSize);
     List<Post> postFindByNickName(String search, int currentPage, int pageSize);
+    void insertPost(Post post);
 }
