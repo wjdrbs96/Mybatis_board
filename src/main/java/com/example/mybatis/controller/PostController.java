@@ -90,7 +90,7 @@ public class PostController {
                             @RequestParam("memberId") int memberId) {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Post post = new Post(memberId, title, content, nickname, 1, sdf.format(new Date()));
+        Post post = new Post(memberId, title, content, nickname, 1, sdf.format(new Date()), sdf.format(new Date()));
         postMapper.insertPost(post);
         return "redirect:/post/list";
     }

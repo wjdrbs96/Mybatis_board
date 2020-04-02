@@ -11,12 +11,13 @@ public class Post {
     String nickName;
     String name;
 
-    public Post(int memberId, String title, String content, String nickName, int count, String createDateTime) {
+    public Post(int memberId, String title, String content, String nickName, int count, String UpdateTime, String createDateTime) {
         this.memberId = memberId;
         this.title = title;
         this.content = content;
         this.nickName = nickName;
         this.count = count;
+        this.UpdateTime = UpdateTime;
         this.createDateTime = createDateTime;
     }
 

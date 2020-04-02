@@ -46,8 +46,8 @@
     </select>
 
     <insert id="insertPost">
-        insert into post(memberId, title, content, count, createDateTime)
-        values (#{memberId}, #{title}, #{content}, #{count}, #{createDateTime})
+        insert into post(memberId, title, content, count, UpdateTime, createDateTime)
+        values (#{memberId}, #{title}, #{content}, #{count},#{UpdateTime}, #{createDateTime})
     </insert>
 
     <delete id="deletePost">
