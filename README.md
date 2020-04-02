@@ -9,7 +9,7 @@
 ---
 ![View](./img/postView.PNG)
 ---
-![Update](./img/PostUpdate.PNG)
+![Update](./img/postUpdate.PNG)
 ---
 ![Comment](./img/commentView.PNG)
 
