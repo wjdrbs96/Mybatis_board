@@ -46,7 +46,8 @@
                 <td width="100px"><textarea class="form-control" name="postId" rows="2" readonly>${comment.getPostId()}</textarea></td>
             </tr>
         </table>
-        <button type="submit" class="btn btn-primary">등록</button>
+        <button type="submit" class="btn btn-primary">수정</button>
+        <a href="javascript:window.history.back()" class="btn btn-info">뒤로가기</a>
     </form>
 
 </div>
