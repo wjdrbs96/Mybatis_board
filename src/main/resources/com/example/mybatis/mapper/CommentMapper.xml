@@ -30,4 +30,10 @@
         where commentId = #{commentId};
     </select>
 
+    <update id="commentUpdate">
+        update comment
+        set content = #{content}
+        where commentId = #{commentId}
+    </update>
+
 </mapper>

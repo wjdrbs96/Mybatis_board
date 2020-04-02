@@ -47,4 +47,20 @@ public class CommentController {
         commentMapper.commentDelete(commentId);
         return "redirect:/comment/list?postId=" + comment.getPostId();
     }
+
+    @RequestMapping(value = "comment/update", method = RequestMethod.GET)
+    public String commentUpdate(Model model,
+                                @RequestParam("commentId") int commentId) {
+        Comment comment = commentMapper.findOneComment(commentId);
+        model.addAttribute("comment", comment);
+        return "comment/commentUpdate";
+    }
+
+    @RequestMapping(value = "comment/update", method = RequestMethod.POST)
+    public String commentUpdate(@RequestParam("content") String content,
+                                @RequestParam("postId") int postId,
+                                @RequestParam("commentId") int commentId) {
+        commentMapper.commentUpdate(content, commentId);
+        return "redirect:/comment/list?postId=" + postId;
+    }
 }

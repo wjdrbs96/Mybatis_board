@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -26,6 +25,7 @@
         body { font-family: 굴림체; }
         table.table { width: 500px; }
         table td:nth-child(1) { background-color: #eee; }
+
         h1 {
             margin-top: 30px;
         }
@@ -35,28 +35,20 @@
 
 <div class="container">
 
-    <h1>댓글 목록 </h1>
-    <table class="table table-hover table table-striped">
-        <tr>
-            <th>댓글번호</th>
-            <th>내용</th>
-            <th>작성시간</th>
-            <th>삭제</th>
-
-        </tr>
-
-        <c:forEach items="${list}" var="comment">
+    <h1>댓글 수정</h1>
+    <form action="http://localhost:8080/comment/update?commentId=${comment.getCommentId()}" method="POST">
+        <table class="table table-bordered table-condensed">
             <tr>
-                <th>${comment.getCommentId()}</th>
-                <th><a href="http://localhost:8080/comment/update?commentId=${comment.getCommentId()}">${comment.getContent()}</a></th>
-                <th>${comment.getCreateDateTime()}</th>
-                <th><a href="http://localhost:8080/comment/delete?commentId=${comment.getCommentId()}">삭제</a></th>
+                <td class="mid" width="100">댓글</td>
+                <td>
+                    <textarea class="form-control" name="content" rows="2" >${comment.getContent()}</textarea>
+                </td>
+                <td width="100px"><textarea class="form-control" name="postId" rows="2" readonly>${comment.getPostId()}</textarea></td>
             </tr>
-        </c:forEach>
-    </table>
-    <a href="http://localhost:8080/post/view?postId=${postId}" class="btn btn-info">게시글로 가기</a>
-</div>
+        </table>
+        <button type="submit" class="btn btn-primary">등록</button>
+    </form>
 
+</div>
 </body>
 </html>
-
