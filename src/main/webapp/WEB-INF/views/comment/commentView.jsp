@@ -39,15 +39,16 @@
     <table class="table table-hover table table-striped">
         <tr>
             <th>댓글번호</th>
+            <th>작성자</th>
             <th>내용</th>
             <th>작성시간</th>
             <th>삭제</th>
-
         </tr>
 
         <c:forEach items="${list}" var="comment">
             <tr>
                 <th>${comment.getCommentId()}</th>
+                <th>${comment.getNickname()}</th>
                 <th><a href="http://localhost:8080/comment/update?commentId=${comment.getCommentId()}">${comment.getContent()}</a></th>
                 <th>${comment.getCreateDateTime()}</th>
                 <th><a href="http://localhost:8080/comment/delete?commentId=${comment.getCommentId()}">삭제</a></th>

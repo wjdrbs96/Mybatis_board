@@ -9,8 +9,9 @@
     </insert>
 
     <select id="findAllComment" resultType="Comment">
-        select *
-        from comment
+        select c.*, m.nickname
+        from comment c join member m
+        on c.memberId = m.memberId
         where postId = #{postId}
     </select>
 

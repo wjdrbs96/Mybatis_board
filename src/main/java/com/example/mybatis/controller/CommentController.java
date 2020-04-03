@@ -1,8 +1,10 @@
 package com.example.mybatis.controller;
 
 import com.example.mybatis.dto.Comment;
+import com.example.mybatis.dto.Member;
 import com.example.mybatis.dto.Post;
 import com.example.mybatis.mapper.CommentMapper;
+import com.example.mybatis.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -18,13 +21,17 @@ import java.util.List;
 public class CommentController {
 
     @Autowired CommentMapper commentMapper;
+    @Autowired MemberMapper memberMapper;
 
-    @RequestMapping(value = "comment/view", method = RequestMethod.GET)
+    @RequestMapping(value = "comment/view", method = RequestMethod.POST)
     public String insertAndAllCommentView(Model model,
                                           @RequestParam("postId") int postId,
-                                          @RequestParam("content") String content) {
+                                          @RequestParam("content") String content,
+                                          HttpSession session) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Comment comment = new Comment(postId, content, sdf.format(new Date()));
+        String loginId = (String)session.getAttribute("userId");
+        Member member = memberMapper.findMemberByLoginId(loginId);
+        Comment comment = new Comment(postId, member.getMemberId(), content, sdf.format(new Date()));
         commentMapper.commentInsert(comment);
         List<Comment> list = commentMapper.findAllComment(postId);
         model.addAttribute("postId", postId);

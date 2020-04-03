@@ -73,7 +73,7 @@
 
 
     <h1>댓글 등록</h1>
-    <form action="http://localhost:8080/comment/view" method="get">
+    <form action="http://localhost:8080/comment/view" method="POST">
         <table class="table table-bordered table-condensed">
             <tr>
                 <td class="mid" width="100">댓글</td>

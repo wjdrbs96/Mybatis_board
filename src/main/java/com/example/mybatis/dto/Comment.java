@@ -9,9 +9,11 @@ public class Comment {
     String content;
     String updateTime;
     String createDateTime;
+    String nickname;
 
-    public Comment(int postId, String content, String createDateTime) {
+    public Comment(int postId, long memberId, String content, String createDateTime) {
         this.postId = postId;
+        this.memberId = memberId;
         this.content = content;
         this.createDateTime = createDateTime;
     }
@@ -64,5 +66,11 @@ public class Comment {
         this.createDateTime = createDateTime;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
 
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 }
