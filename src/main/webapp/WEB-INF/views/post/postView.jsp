@@ -28,6 +28,7 @@
 
         h1 {
             margin-top: 30px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
