@@ -66,7 +66,6 @@
             </tr>
         </table>
 
-        <a class="btn btn-primary" href="http://localhost:8080/post/update?postId=${posts.getPostId()}&memberId=${posts.getMemberId()}">수정</a>
         <a href="http://localhost:8080/comment/list?postId=${posts.getPostId()}" class="btn btn-warning">댓글</a>
         <a href="http://localhost:8080/post/delete?postId=${posts.getPostId()}" class="btn btn-warning" onclick="confirm('삭제하시겠습니까?')">삭제</a>
         <a href="javascript:window.history.back()" class="btn btn-info">뒤로가기</a>

@@ -63,13 +63,21 @@ public class PostController {
 
     @RequestMapping(value = "post/view", method = RequestMethod.GET)
     public String postView(Model model,
-                           @RequestParam("postId") int postId) {
+                           @RequestParam("postId") int postId,
+                           HttpSession session) {
 
         Post post = postMapper.findByPostId(postId);
         post.setCount(post.getCount() + 1);
         postMapper.postUpdate(post);
+        String loginId = (String)session.getAttribute("userId");
+        Member member = memberMapper.findMemberByLoginId(loginId);
         model.addAttribute("posts", post);
-        return "post/postView";
+        if (post.getMemberId() == member.getMemberId() || member.getMemberId() == 1) {
+            return "post/postView";
+        }
+
+        return "post/postOnlyView";
+
     }
 
     @RequestMapping(value = "post/write", method = RequestMethod.GET)
@@ -77,8 +85,6 @@ public class PostController {
         String loginId = (String)session.getAttribute("userId");
         Member member = memberMapper.findMemberByLoginId(loginId);
         model.addAttribute("member", member);
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         return "post/writePost";
     }

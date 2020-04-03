@@ -94,7 +94,7 @@
                 <th>${post.getPostId()}</th>
                 <th>${post.getNickName()}</th>
                 <th>
-                    <a href="http://localhost:8080/post/view?postId=${post.getPostId()}">${post.getTitle()}</a>
+                    <a href="http://localhost:8080/post/view?postId=${post.getPostId()}&memberId=${post.getMemberId()}">${post.getTitle()}</a>
                 </th>
                 <th>${post.getCount()}</th>
                 <th>${post.getUpdateTime()}</th>
