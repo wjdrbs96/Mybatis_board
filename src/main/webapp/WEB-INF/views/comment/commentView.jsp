@@ -28,6 +28,7 @@
         table td:nth-child(1) { background-color: #eee; }
         h1 {
             margin-top: 30px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -35,7 +36,7 @@
 
 <div class="container">
 
-    <h1>댓글 목록 </h1>
+    <a href="http://localhost:8080/comment/list?postId=${postId}"><h1>댓글 목록 </h1></a>
     <table class="table table-hover table table-striped">
         <tr>
             <th>댓글번호</th>
