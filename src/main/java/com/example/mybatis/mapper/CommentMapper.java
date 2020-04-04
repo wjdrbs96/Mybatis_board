@@ -12,5 +12,5 @@ public interface CommentMapper {
     void postCommentAllDelete(int postId);
     void commentDelete(int commentId);
     Comment findOneComment(int commentId);
-    void commentUpdate(String content, int commentId);
+    void commentUpdate(String content, String updateTime, int commentId);
 }

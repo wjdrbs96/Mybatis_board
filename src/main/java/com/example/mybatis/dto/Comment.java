@@ -11,11 +11,12 @@ public class Comment {
     String createDateTime;
     String nickname;
 
-    public Comment(int postId, long memberId, String content, String createDateTime) {
+    public Comment(int postId, long memberId, String content, String createDateTime, String updateTime) {
         this.postId = postId;
         this.memberId = memberId;
         this.content = content;
         this.createDateTime = createDateTime;
+        this.updateTime = updateTime;
     }
 
     public String getUpdateTime() {

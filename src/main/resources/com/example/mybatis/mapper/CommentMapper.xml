@@ -4,8 +4,8 @@
 
 <mapper namespace="com.example.mybatis.mapper.CommentMapper">
     <insert id="commentInsert">
-        insert into comment(postId, memberId, content, createDateTime)
-        values (#{postId}, #{memberId}, #{content}, #{createDateTime})
+        insert into comment(postId, memberId, content, createDateTime, updateTime)
+        values (#{postId}, #{memberId}, #{content}, #{createDateTime}, #{updateTime})
     </insert>
 
     <select id="findAllComment" resultType="Comment">
@@ -33,7 +33,7 @@
 
     <update id="commentUpdate">
         update comment
-        set content = #{content}
+        set content = #{content}, updateTime = #{updateTime}
         where commentId = #{commentId}
     </update>
 

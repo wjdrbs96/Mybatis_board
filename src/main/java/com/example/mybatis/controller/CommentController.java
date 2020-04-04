@@ -31,7 +31,7 @@ public class CommentController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String loginId = (String)session.getAttribute("userId");
         Member member = memberMapper.findMemberByLoginId(loginId);
-        Comment comment = new Comment(postId, member.getMemberId(), content, sdf.format(new Date()));
+        Comment comment = new Comment(postId, member.getMemberId(), content, sdf.format(new Date()), sdf.format(new Date()));
         commentMapper.commentInsert(comment);
         List<Comment> list = commentMapper.findAllComment(postId);
         model.addAttribute("postId", postId);
@@ -67,7 +67,8 @@ public class CommentController {
     public String commentUpdate(@RequestParam("content") String content,
                                 @RequestParam("postId") int postId,
                                 @RequestParam("commentId") int commentId) {
-        commentMapper.commentUpdate(content, commentId);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        commentMapper.commentUpdate(content, sdf.format(new Date()), commentId);
         return "redirect:/comment/list?postId=" + postId;
     }
 }

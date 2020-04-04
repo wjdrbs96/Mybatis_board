@@ -43,6 +43,7 @@
             <th>작성자</th>
             <th>내용</th>
             <th>작성시간</th>
+            <th>수정시간</th>
             <th>삭제</th>
         </tr>
 
@@ -52,6 +53,7 @@
                 <th>${comment.getNickname()}</th>
                 <th><a href="http://localhost:8080/comment/update?commentId=${comment.getCommentId()}">${comment.getContent()}</a></th>
                 <th>${comment.getCreateDateTime()}</th>
+                <th>${comment.getUpdateTime()}</th>
                 <th><a href="http://localhost:8080/comment/delete?commentId=${comment.getCommentId()}">삭제</a></th>
             </tr>
         </c:forEach>
