@@ -1,10 +1,8 @@
 package com.example.mybatis.mapper;
 
-import com.example.mybatis.dto.Member;
 import com.example.mybatis.dto.Post;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 @Mapper
